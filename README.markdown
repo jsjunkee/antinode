@@ -44,9 +44,18 @@ Explanation of properties:
 - `port` - the port to listen for HTTP connections on. default: 8080
 - `hosts` - an object with one property name per virtual host address, with the value of a 'virtual host' object to 
 - `default_host` - the 'virtual host' object to default to if no other virtual hosts match, or the HTTP `Host` header is not given
+- `log_level` - specifys what should be logged
+- `script_cache` - if scripts should be cached (if true, you have to restart the server when making changes on a script)
+- `timeout_milliseconds` - timeout in milliseconds
 
-'virtual host object' - has a property `root` giving the directory to serve
-   web requests from
+
+'virtual host object' properties:
+
+- `root` - giving the directory to serve web requests from
+- `script` - script which is executed when there is a request to the host
+- `not_found` - script which is executed when a file is not found
+- `internal_error` - script which is executed when there is an internal error
+- `server_script_error` - script which is executed when there was a error in a script
 
 
 This serves up all the files in `/var/www` listening to HTTP requests on port 8080.
